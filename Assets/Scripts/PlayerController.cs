@@ -19,4 +19,15 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = new Vector3(moveHorizontal, moveVertical, 0);
         transform.Translate(direction * speed * Time.deltaTime);
     }
+
+    //este método especial de unity se ejecuta cuando interactuamos con un objeto en modo Trigger
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Collectable"))
+        {
+            Destroy(other.gameObject);
+            Debug.Log("Collected!");
+        }
+    }
+
 }
