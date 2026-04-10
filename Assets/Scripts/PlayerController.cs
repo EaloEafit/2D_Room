@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
+    public int score = 0;
+    public bool hasKey = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,8 +27,27 @@ public class PlayerController : MonoBehaviour
     {
         if(other.CompareTag("Collectable"))
         {
+            score = score + 1;//le sumo 1 a la variable score
             Destroy(other.gameObject);
             Debug.Log("Collected!");
+            Debug.Log("Score: " + score);
+           
+        }
+        if(other.CompareTag("Key"))
+        {
+            hasKey = true;
+            Debug.Log("KEY Collected!");
+            Destroy(other.gameObject);
+        }
+
+        //condicion para ganar el juego
+        if (score >= 3 && hasKey == true)
+        {
+            Debug.Log("You Won!");
+        }
+        else
+        {
+             Debug.Log("Keep trying, you need 3 and the KEY to win");
         }
     }
 
