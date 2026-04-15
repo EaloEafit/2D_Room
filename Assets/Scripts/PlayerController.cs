@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public int score = 0;
     public bool hasKey = false;
+    public bool hasWater = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,15 +41,21 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        //condicion para ganar el juego
-        if (score >= 3 && hasKey == true)
+        if(other.CompareTag("Water"))
+        {
+            hasWater = true;
+            Debug.Log("Has tocado el agua, comunicate con el servicio tecnico de Samsung, Oh!");
+            
+        }
+                
+        if (score >= 3 && hasKey == true && !hasWater) //
         {
             Debug.Log("You Won!");
         }
-        else
+        /*else
         {
              Debug.Log("Keep trying, you need 3 and the KEY to win");
-        }
+        }*/
     }
 
 }
