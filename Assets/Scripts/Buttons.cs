@@ -9,6 +9,11 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void QuitGame()
     {
         Application.Quit ();
